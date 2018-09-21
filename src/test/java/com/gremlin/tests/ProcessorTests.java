@@ -11,7 +11,8 @@ public class ProcessorTests
     @Test()
     public void Test1()
     {
-        processor.evaluate("a = 2");
+        //ExpressionResult a = processor.evaluate("a = 2 * (2 + 1)");
+        ExpressionResult b = processor.evaluate("b = a++ + 2");
 
         //assertTrue("Expected a to be 2.", processor.Execute("a") == 2);
     }

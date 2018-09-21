@@ -80,6 +80,10 @@ atom
    : number
    | variable
    | minusVariable
+   | minusminusVariable
+   | plusplusVariable
+   | variableMinusminus
+   | variablePlusplus
    | parentheses
    ;
 
@@ -125,6 +129,14 @@ minusminusVariable
 
 plusplusVariable
     : PLUSPLUS variable
+    ;
+
+variableMinusminus
+    : variable MINUSMINUS
+    ;
+
+variablePlusplus
+    : variable PLUSPLUS
     ;
 
 variable

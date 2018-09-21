@@ -77,12 +77,22 @@ class ExpressionBuilder extends ArithmeticBaseVisitor<Expression>
 
     @Override
     public Expression visitMinusminusVariable(MinusminusVariableContext ctx) {
-        return new UnaryExpression(this.visitVariable(ctx.variable()), UnaryKind.MINUSMINUS);
+        return new UnaryExpression(this.visitVariable(ctx.variable()), UnaryKind.PREMINUSMINUS);
+    }
+
+    @Override
+    public Expression visitVariableMinusminus(VariableMinusminusContext ctx) {
+        return new UnaryExpression(this.visitVariable(ctx.variable()), UnaryKind.POSTMINUSMINUS);
     }
 
     @Override
     public Expression visitPlusplusVariable(PlusplusVariableContext ctx) {
-        return new UnaryExpression(this.visitVariable(ctx.variable()), UnaryKind.PLUSPLUS);
+        return new UnaryExpression(this.visitVariable(ctx.variable()), UnaryKind.PREPLUSPLUS);
+    }
+
+    @Override
+    public Expression visitVariablePlusplus(VariablePlusplusContext ctx) {
+        return new UnaryExpression(this.visitVariable(ctx.variable()), UnaryKind.POSTPLUSPLUS);
     }
 
     @Override
