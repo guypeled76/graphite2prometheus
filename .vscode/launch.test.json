@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "tbcalc",
+                "projectName": "tbcalc",
+                "workingDirectory": "/home/guypeled/Projects/Java/TBCalc",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "tbcalc",
+                "projectName": "tbcalc",
+                "workingDirectory": "/home/guypeled/Projects/Java/TBCalc",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
