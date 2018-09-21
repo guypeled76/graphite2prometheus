@@ -9,39 +9,44 @@ import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.TokenStream;
 
 import com.gremlin.apps.ArithmeticParser.EquationContext;
-import com.gremlin.apps.ArithmeticParser.MyequationContext;
+import com.gremlin.engine.Processor;
 
 /**
  * @author Tom Everett
  */
 class Main {
    public static void main(String[] args) {
-      System.out.println("Antlr4 Example");
-      try {
-         /*
-          * get the input file as an InputStream
-          */
-         InputStream inputStream = Main.class.getResourceAsStream("/pyth.txt");
-         /*
-          * make Lexer
-          */
-         Lexer lexer = new ArithmeticLexer(CharStreams.fromStream(inputStream));
-         /*
-          * get a TokenStream on the Lexer
-          */
-         TokenStream tokenStream = new CommonTokenStream(lexer);
-         /*
-          * make a Parser on the token stream
-          */
-          ArithmeticParser parser = new ArithmeticParser(tokenStream);
-         /*
-          * get the top node of the AST. This corresponds to the topmost rule of equation.q4, "equation"
-          */
-         MyequationContext equationContext = parser.myequation();
-
+      
+        // The arithmetic processor
+        Processor processor = new Processor();
         
-      } catch (IOException e) {
-         e.printStackTrace();
-      }
+        // The current line from the console
+        String line = null;
+
+        // Read next line and process or exit
+        while((line = readLine()) != "exit")
+        {
+            // Execute line
+            Object value = processor.Execute(line);
+            if(value != null)
+            {
+                // Print the value of the executed expression
+                System.out.println(value);
+            }
+        } 
    }
+
+    /**
+     * Reads the next line from the user.
+     * @return A single line.
+     */
+    private static String readLine() {
+        String line = System.console().readLine();
+        if(line != null) {
+            // normalize line
+            line = line.trim();
+        }
+        
+        return line;
+    }
 }

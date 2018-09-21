@@ -1,10 +1,5 @@
 grammar Arithmetic;
  
-
-myequation
-   : expression relop expression
-   ;
-
 equation
    : expression relop expression
    ;
@@ -32,9 +27,12 @@ scientific
    ;
 
 relop
-   : EQ
+   : ASSIGN
+   | EQ
    | GT
    | LT
+   | LTE
+   | GTE
    ;
 
 number
@@ -56,10 +54,17 @@ RPAREN
    ;
 
 
+PLUSPLUS
+   : '++'
+   ;
+
+MINUSMINUS
+   : '--'
+   ;
+
 PLUS
    : '+'
    ;
-
 
 MINUS
    : '-'
@@ -75,18 +80,27 @@ DIV
    : '/'
    ;
 
+GTE
+   : '>='
+   ;
 
 GT
    : '>'
    ;
 
+LTE
+   : '<='
+   ;
 
 LT
    : '<'
    ;
 
-
 EQ
+   : '=='
+   ;
+
+ASSIGN
    : '='
    ;
 
