@@ -1,26 +1,47 @@
 package com.gremlin.engine;
 
 
+import java.util.HashMap;
 
+
+/**
+ * Provides support for processing arithmetics expressions.
+ */
 public class Processor
 {
 
-	
+	/**
+	 * Holds the processor state
+	 */
+	private HashMap<String, Object> state = new HashMap<String, Object>();
+
 
 	/**
-	 * Executes an arithmethic expression or equation
-	 * @param expressionOrEquation The arithmethic expression or equation to execute.
+	 * Evaluate an arithmethic expression or equation
+	 * @param expressionOrEquation The arithmethic expression or equation to evaluate.
 	 * @return The evaluation of the expression or null
 	 */
-	public Object Execute(String expressionOrEquation) {
+	public ExpressionResult evaluate(String expressionOrEquation) {
 
 		
-		ExpressionBuilder expressionBuilder = new ExpressionBuilder();
-		Expression expression = expressionBuilder.build(expressionOrEquation);
+		Expression expression = Expression.build(expressionOrEquation);
 		if(expression != null) {
-			return expression.Execute(this);
+			return expression.Evaluate(this);
 		}
-		return expression;
+		return null;
+	}
+
+	/**
+	 * Gets identifier state value
+	 * @param identifier The identifier to get it's state.
+	 * @return The identifier state.
+	 */
+	public Object getIdentifierValue(String identifier) {
+		return this.state.get(identifier);
+	}
+
+	public void setIdentifierValue(String identifier, Object value) {
+		this.state.put(identifier, value);
 	}
 
 

@@ -8,11 +8,14 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.TokenStream;
 
-public class Expression
+public abstract class Expression
 {
-    public Object Execute(Processor processor) {
-        return null;
-    }
+	/**
+	 * Evaluates the expression and returns an expression result.
+	 * @param processor The current processor to evaluate the expression against.
+	 * @return The expression result.
+	 */
+    public abstract ExpressionResult Evaluate(Processor processor);
 
 	public static Expression build(String expressionOrEquation) {
         Lexer lexer = new ArithmeticLexer(CharStreams.fromString(expressionOrEquation));
@@ -21,4 +24,6 @@ public class Expression
 		ExpressionBuilder expressionBuilder = new ExpressionBuilder();
 		return expressionBuilder.visitContent(parser.content());
 	}
+
+	
 }

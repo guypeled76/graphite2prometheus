@@ -1,14 +1,6 @@
 package com.gremlin.apps;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.TokenStream;
-
-import com.gremlin.apps.ArithmeticParser.EquationContext;
+import com.gremlin.engine.ExpressionResult;
 import com.gremlin.engine.Processor;
 
 /**
@@ -26,12 +18,12 @@ class Main {
         // Read next line and process or exit
         while((line = readLine()) != "exit")
         {
-            // Execute line
-            Object value = processor.Execute(line);
-            if(value != null)
+            // Evaluate line
+            ExpressionResult result = processor.evaluate(line);
+            if(result != null)
             {
-                // Print the value of the executed expression
-                System.out.println(value);
+                // Print the value of the evaluated expression
+                System.out.println(result);
             }
         } 
    }

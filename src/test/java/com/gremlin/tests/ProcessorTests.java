@@ -11,7 +11,7 @@ public class ProcessorTests
     @Test()
     public void Test1()
     {
-        processor.Execute("a = 2");
+        processor.evaluate("a = 2");
 
         //assertTrue("Expected a to be 2.", processor.Execute("a") == 2);
     }
