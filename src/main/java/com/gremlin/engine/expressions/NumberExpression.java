@@ -4,11 +4,16 @@ import com.gremlin.engine.Expression;
 import com.gremlin.engine.ExpressionResult;
 import com.gremlin.engine.Processor;
 
-class PrimitiveExpression extends Expression
+public class NumberExpression extends Expression
 {
-    private Object value;
+    private float value;
 
-    public PrimitiveExpression(Object value) {
+    public NumberExpression(float value) {
+        this.value = value;
+    }
+
+
+    public NumberExpression(float value, float exponent) {
         this.value = value;
     }
 

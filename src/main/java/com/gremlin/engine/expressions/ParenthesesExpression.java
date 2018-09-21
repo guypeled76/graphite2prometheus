@@ -4,7 +4,7 @@ import com.gremlin.engine.Expression;
 import com.gremlin.engine.ExpressionResult;
 import com.gremlin.engine.Processor;
 
-class ParenthesesExpression extends Expression
+public class ParenthesesExpression extends Expression
 {
     private Expression expression;
 

@@ -9,7 +9,11 @@ public class ExpressionResult
 		return null;
 	}
 
-	public static ExpressionResult forValue(Object value) {
+	public static ExpressionResult forValue(float value) {
+		return null;
+	}
+
+	public static ExpressionResult forEmpty() {
 		return null;
 	}
 }

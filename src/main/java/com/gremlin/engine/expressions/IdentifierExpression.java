@@ -4,7 +4,7 @@ import com.gremlin.engine.Expression;
 import com.gremlin.engine.ExpressionResult;
 import com.gremlin.engine.Processor;
 
-class IdentifierExpression extends Expression
+public class IdentifierExpression extends Expression
 {
     private String identifier;
 

@@ -1,8 +1,23 @@
 grammar Arithmetic;
  
 content
-    : equation
+    : assignment
+    | plusAssignment
+    | minusAssignment
+    | equation
     | expression
+    ;
+
+assignment
+    : variable ASSIGN expression
+    ;
+
+plusAssignment
+    : variable PLUSASSIGN expression
+    ;
+
+minusAssignment
+    : variable MINUSASSIGN expression
     ;
 
 equation
@@ -10,28 +25,61 @@ equation
    ;
 
 expression
-   : term (expressionOp term)*
+   : simpleExpression
+   | additionExpression
+   | subtractionExpression
    ;
 
-expressionOp
-    : PLUS | MINUS
+simpleExpression
+    : term
     ;
 
+additionExpression
+    : term PLUS expression
+    ;
+
+subtractionExpression
+    : term MINUS expression
+    ;
+
+
+
+
 term
-   : factor (termOp factor)*
+   : simpleTerm
+   | divisionTerm
+   | multiplicationTerm
    ;
 
-termOp
-    : TIMES | DIV
+simpleTerm
+    : factor
+    ;
+
+multiplicationTerm
+    : factor TIMES term
+    ;
+
+divisionTerm
+    : factor DIV term
     ;
 
 factor
-   : atom (POW atom)*
+   : simpleFactor
+   | powerFactor
    ;
 
+simpleFactor
+    : atom
+    ;
+
+powerFactor
+    : atom POW factor
+    ;
+
 atom
-   : scientific
+   : number
    | variable
+   | minusVariable
    | parentheses
    ;
 
@@ -39,25 +87,48 @@ parentheses
     : LPAREN expression RPAREN
     ;
 
-scientific
-   : number (E number)?
+number
+   : simpleNumber
+   | minusNumber
+   | scientificNumber
+   ;
+
+minusNumber
+    : MINUS simpleNumber
+    ;
+
+simpleNumber
+    : DIGIT + (POINT DIGIT +)?
+    ;
+
+scientificNumber
+   : simpleNumber (E simpleNumber)
    ;
 
 relop
-   : ASSIGN
-   | EQ
+   : EQ
    | GT
    | LT
    | LTE
    | GTE
    ;
 
-number
-   : MINUS? DIGIT + (POINT DIGIT +)?
+
+
+minusVariable
+   : MINUS variable
    ;
 
+minusminusVariable
+    : MINUSMINUS variable
+    ;
+
+plusplusVariable
+    : PLUSPLUS variable
+    ;
+
 variable
-   : MINUS? LETTER (LETTER | DIGIT)*
+   : LETTER (LETTER | DIGIT)*
    ;
 
 
@@ -79,9 +150,18 @@ MINUSMINUS
    : '--'
    ;
 
+MINUSASSIGN
+   : '-='
+   ;
+
 PLUS
    : '+'
    ;
+
+PLUSASSIGN
+   : '+='
+   ;
+
 
 MINUS
    : '-'
