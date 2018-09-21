@@ -1,16 +1,29 @@
 grammar Arithmetic;
  
+content
+    : equation
+    | expression
+    ;
+
 equation
    : expression relop expression
    ;
 
 expression
-   : term ((PLUS | MINUS) term)*
+   : term (expressionOp term)*
    ;
 
+expressionOp
+    : PLUS | MINUS
+    ;
+
 term
-   : factor ((TIMES | DIV) factor)*
+   : factor (termOp factor)*
    ;
+
+termOp
+    : TIMES | DIV
+    ;
 
 factor
    : atom (POW atom)*
@@ -19,8 +32,12 @@ factor
 atom
    : scientific
    | variable
-   | LPAREN expression RPAREN
+   | parentheses
    ;
+
+parentheses
+    : LPAREN expression RPAREN
+    ;
 
 scientific
    : number (E number)?
