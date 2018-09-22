@@ -1,8 +1,7 @@
 package com.gremlin.engine.expressions;
 
 import com.gremlin.engine.Expression;
-import com.gremlin.engine.ExpressionResult;
-import com.gremlin.engine.Processor;
+
 
 public class NumberExpression extends Expression
 {
@@ -17,8 +16,16 @@ public class NumberExpression extends Expression
         this.value = value;
     }
 
+    /**
+     * Gest actual value from expression.
+     * @return Expression value.
+     */
+    public float toValue() {
+        return this.value;
+    }
+
     @Override
-    public ExpressionResult Evaluate(Processor processor) {
-        return ExpressionResult.forValue(this.value);
+    public String toString() {
+        return String.valueOf(this.value);
     }
 }

@@ -1,5 +1,6 @@
 package com.gremlin.apps;
 
+import com.gremlin.engine.Expression;
 import com.gremlin.engine.ExpressionResult;
 import com.gremlin.engine.Processor;
 
@@ -19,7 +20,7 @@ class Main {
         while((line = readLine()) != "exit")
         {
             // Evaluate line
-            ExpressionResult result = processor.evaluate(line);
+            Expression result = processor.evaluate(line);
             if(result != null)
             {
                 // Print the value of the evaluated expression

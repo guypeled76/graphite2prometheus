@@ -72,7 +72,7 @@ class ExpressionBuilder extends ArithmeticBaseVisitor<Expression>
     
     @Override
     public Expression visitVariable(VariableContext ctx) {        
-        return new IdentifierExpression(ctx.getText());
+        return new VariableExpression(ctx.getText());
     }
 
     @Override
