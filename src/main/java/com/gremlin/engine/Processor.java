@@ -3,6 +3,7 @@ package com.gremlin.engine;
 
 import java.rmi.registry.Registry;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.gremlin.engine.expressions.*;
 
@@ -87,6 +88,25 @@ public class Processor
 	 */
 	public void assignVariable(String identifier, Expression value) {
 		this.state.put(identifier, value);
+	}
+
+	/**
+	 * Returns a debug string of the processor state
+	 * @return A debug string of the processor state
+	 */
+	public String debug() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("(");
+		boolean isFirst = true;
+		for(Map.Entry<String, Expression> entry : this.state.entrySet()) {
+			if(!isFirst) builder.append(",");
+			builder.append(entry.getKey());
+			builder.append("=");
+			builder.append(entry.getValue());
+			isFirst = false;
+		}
+		builder.append(")");
+		return builder.toString();
 	}
 
 
