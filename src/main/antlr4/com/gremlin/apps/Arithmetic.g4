@@ -49,6 +49,7 @@ term
    : simpleTerm
    | divisionTerm
    | multiplicationTerm
+   | moduloTerm
    ;
 
 simpleTerm
@@ -61,6 +62,10 @@ multiplicationTerm
 
 divisionTerm
     : factor DIV term
+    ;
+
+moduloTerm
+    : factor MODULO term
     ;
 
 factor
@@ -95,6 +100,7 @@ number
    : simpleNumber
    | minusNumber
    | scientificNumber
+   | hexNumber
    ;
 
 minusNumber
@@ -108,6 +114,14 @@ simpleNumber
 scientificNumber
    : simpleNumber (E simpleNumber)
    ;
+
+hexNumber
+   : HEX hexString
+   ;
+
+hexString
+    : (LETTER | DIGIT)+
+    ;
 
 relop
    : EQ
@@ -218,6 +232,9 @@ POINT
    : '.'
    ;
 
+MODULO
+    : '%'
+    ;
 
 E
    : 'e' | 'E'
@@ -228,6 +245,9 @@ POW
    : '^'
    ;
 
+HEX 
+    : '0x'
+    ;
 
 LETTER
    : ('a' .. 'z') | ('A' .. 'Z')

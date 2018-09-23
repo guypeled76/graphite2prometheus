@@ -6,5 +6,6 @@ public enum BinaryKind
     MULTIPLICATION,
     ADDITION,
     SUBTRACTION,
-    POWER
+    POWER,
+    MODULO
 }

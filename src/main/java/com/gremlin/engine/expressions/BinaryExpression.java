@@ -1,7 +1,6 @@
 package com.gremlin.engine.expressions;
 
 import com.gremlin.engine.Expression;
-import com.gremlin.engine.ExpressionResult;
 import com.gremlin.engine.Processor;
 
 public class BinaryExpression extends Expression
@@ -42,6 +41,8 @@ public class BinaryExpression extends Expression
                     return new NumberExpression(leftValue / rightValue);
                 case POWER:
                     return new NumberExpression((float)Math.pow(leftValue, rightValue));
+                case MODULO:
+                    return new NumberExpression(leftValue % rightValue);
             }
         }
         
@@ -64,6 +65,8 @@ public class BinaryExpression extends Expression
                 return this.left.toString() + " / " + this.right.toString();
             case POWER:
                 return this.left.toString() + " ^ " + this.right.toString();
+            case MODULO:
+                return this.left.toString() + " % " + this.right.toString();
         }
 
         return super.toString();

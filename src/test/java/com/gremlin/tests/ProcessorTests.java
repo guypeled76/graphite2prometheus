@@ -78,4 +78,27 @@ public class ProcessorTests
         assertTrue("'a' should be -3.", processor.checkVariable("a", -3));
         assertTrue("'b' should be -6.", processor.checkVariable("b", -6));
     }
+
+    @Test()
+    public void moduloTest()
+    {
+        Processor processor = new Processor();
+        processor.execute("a = 6");
+        processor.execute("b =  a % 4");
+
+        assertTrue("'a' should be 6.", processor.checkVariable("a", 6));
+        assertTrue("'b' should be 2.", processor.checkVariable("b", 2));
+    }
+
+
+    @Test()
+    public void hexTest()
+    {
+        Processor processor = new Processor();
+        processor.execute("a = 0xAFF + 1");
+        processor.execute("b =  a + 2");
+
+        assertTrue("'a' should be 2816.", processor.checkVariable("a", 2816));
+        assertTrue("'b' should be 2818.", processor.checkVariable("b", 2818));
+    }
 }

@@ -3,7 +3,6 @@ package com.gremlin.apps;
 import java.util.Scanner;
 
 import com.gremlin.engine.Expression;
-import com.gremlin.engine.ExpressionResult;
 import com.gremlin.engine.Processor;
 
 /**

@@ -56,6 +56,13 @@ class ExpressionBuilder extends ArithmeticBaseVisitor<Expression>
     }
 
     @Override
+    public Expression visitHexNumber(HexNumberContext ctx) {
+        return new NumberExpression(
+            Long.parseLong(ctx.hexString().getText(), 16)
+        );
+    }
+
+    @Override
     public Expression visitScientificNumber(ScientificNumberContext ctx) {
         return new NumberExpression(
             Float.parseFloat(ctx.simpleNumber(0).getText()),
@@ -114,6 +121,15 @@ class ExpressionBuilder extends ArithmeticBaseVisitor<Expression>
         return new BinaryExpression(
             this.visitFactor(ctx.factor()),
             BinaryKind.MULTIPLICATION,
+            this.visitTerm(ctx.term())
+        );
+    }
+
+    @Override
+    public Expression visitModuloTerm(ModuloTermContext ctx) {
+        return new BinaryExpression(
+            this.visitFactor(ctx.factor()),
+            BinaryKind.MODULO,
             this.visitTerm(ctx.term())
         );
     }
