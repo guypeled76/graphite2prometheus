@@ -11,11 +11,6 @@ public class NumberExpression extends Expression
         this.value = value;
     }
 
-
-    public NumberExpression(double value, double exponent) {
-        this.value = value;
-    }
-
     /**
      * Gest actual value from expression.
      * @return Expression value.

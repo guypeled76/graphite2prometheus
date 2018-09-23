@@ -1,8 +1,8 @@
 package com.gremlin.engine;
 
+import com.gremlin.engine.ArithmeticParser.*;
 import com.gremlin.engine.expressions.*;
-import com.gremlin.apps.ArithmeticBaseVisitor;
-import com.gremlin.apps.ArithmeticParser.*;
+
 
 
 class ExpressionBuilder extends ArithmeticBaseVisitor<Expression>
@@ -65,15 +65,15 @@ class ExpressionBuilder extends ArithmeticBaseVisitor<Expression>
     @Override
     public Expression visitScientificNumber(ScientificNumberContext ctx) {
         return new NumberExpression(
-            Float.parseFloat(ctx.simpleNumber(0).getText()),
-            Float.parseFloat(ctx.simpleNumber(1).getText())
+            Double.parseDouble(ctx.scientificNumberPart(0).getText()) *
+            Math.pow(10, Double.parseDouble(ctx.scientificNumberPart(1).getText()))
         );
     }
 
     @Override
     public Expression visitMinusNumber(MinusNumberContext ctx) {
         return new NumberExpression(
-            Float.parseFloat(ctx.simpleNumber().getText()) * -1
+            Double.parseDouble(ctx.simpleNumber().getText()) * -1
         );
     }
     

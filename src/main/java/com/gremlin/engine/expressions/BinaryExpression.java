@@ -25,8 +25,8 @@ public class BinaryExpression extends Expression
         // If expressions was reduced o number expressions
         if(evaluatedLeft instanceof NumberExpression && evaluatedRight instanceof NumberExpression) {
 
-            Double leftValue = ((NumberExpression)evaluatedLeft).toValue();
-            Double rightValue = ((NumberExpression)evaluatedRight).toValue();
+            double leftValue = ((NumberExpression)evaluatedLeft).toValue();
+            double rightValue = ((NumberExpression)evaluatedRight).toValue();
 
             // Evaluate operation based on kind
             switch(this.kind)

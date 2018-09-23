@@ -108,8 +108,13 @@ simpleNumber
     ;
 
 scientificNumber
-   : simpleNumber (E simpleNumber)
+   : scientificNumberPart (E scientificNumberPart)
    ;
+
+scientificNumberPart
+    : minusNumber
+    | simpleNumber
+    ;
 
 hexNumber
    : HEX hexString
