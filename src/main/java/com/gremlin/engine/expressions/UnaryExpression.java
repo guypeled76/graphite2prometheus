@@ -27,7 +27,7 @@ public class UnaryExpression extends Expression
             if(evaluatedExpression instanceof NumberExpression) {
 
                 // Get number from expression
-                float expressionValue = ((NumberExpression)evaluatedExpression).toValue();
+                Double expressionValue = ((NumberExpression)evaluatedExpression).toValue();
 
                 // Return the negative value
                 return new NumberExpression(expressionValue * -1);

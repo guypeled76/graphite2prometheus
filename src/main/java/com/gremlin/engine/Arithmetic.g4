@@ -4,10 +4,9 @@ content
     : assignment
     | plusAssignment
     | minusAssignment
-    | equation
     | expression
     ;
-
+ 
 assignment
     : variable ASSIGN expression
     ;
@@ -20,9 +19,6 @@ minusAssignment
     : variable MINUSASSIGN expression
     ;
 
-equation
-   : expression relop expression
-   ;
 
 expression
    : simpleExpression
@@ -123,13 +119,6 @@ hexString
     : (LETTER | DIGIT)+
     ;
 
-relop
-   : EQ
-   | GT
-   | LT
-   | LTE
-   | GTE
-   ;
 
 
 

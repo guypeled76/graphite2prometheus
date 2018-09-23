@@ -69,7 +69,7 @@ public class Processor
 	 * @param value The value to check
 	 * @return True if variable value is same as value
 	 */
-	public boolean checkVariable(String identifier, float value)
+	public boolean checkVariable(String identifier, double value)
 	{
 		Expression expression = this.state.get(identifier);
 		if(expression instanceof NumberExpression)

@@ -5,14 +5,14 @@ import com.gremlin.engine.Expression;
 
 public class NumberExpression extends Expression
 {
-    private float value;
+    private double value;
 
-    public NumberExpression(float value) {
+    public NumberExpression(double value) {
         this.value = value;
     }
 
 
-    public NumberExpression(float value, float exponent) {
+    public NumberExpression(double value, double exponent) {
         this.value = value;
     }
 
@@ -20,7 +20,7 @@ public class NumberExpression extends Expression
      * Gest actual value from expression.
      * @return Expression value.
      */
-    public float toValue() {
+    public double toValue() {
         return this.value;
     }
 

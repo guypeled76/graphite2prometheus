@@ -101,4 +101,15 @@ public class ProcessorTests
         assertTrue("'a' should be 2816.", processor.checkVariable("a", 2816));
         assertTrue("'b' should be 2818.", processor.checkVariable("b", 2818));
     }
+
+    @Test()
+    public void dotTest()
+    {
+        Processor processor = new Processor();
+        processor.execute("a = 0.5");
+        processor.execute("b =  a + 2");
+
+        assertTrue("'a' should be 0.5.", processor.checkVariable("a", 0.5));
+        assertTrue("'b' should be 2.5.", processor.checkVariable("b", 2.5));
+    }
 }

@@ -25,8 +25,8 @@ public class BinaryExpression extends Expression
         // If expressions was reduced o number expressions
         if(evaluatedLeft instanceof NumberExpression && evaluatedRight instanceof NumberExpression) {
 
-            float leftValue = ((NumberExpression)evaluatedLeft).toValue();
-            float rightValue = ((NumberExpression)evaluatedRight).toValue();
+            Double leftValue = ((NumberExpression)evaluatedLeft).toValue();
+            Double rightValue = ((NumberExpression)evaluatedRight).toValue();
 
             // Evaluate operation based on kind
             switch(this.kind)
@@ -40,7 +40,7 @@ public class BinaryExpression extends Expression
                 case DEVISION:
                     return new NumberExpression(leftValue / rightValue);
                 case POWER:
-                    return new NumberExpression((float)Math.pow(leftValue, rightValue));
+                    return new NumberExpression(Math.pow(leftValue, rightValue));
                 case MODULO:
                     return new NumberExpression(leftValue % rightValue);
             }
