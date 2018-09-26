@@ -48,7 +48,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void testPlusEqual()
+    public void plusEqualTest()
     {
         Processor processor = new Processor();
         processor.execute("a = 3");
