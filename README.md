@@ -4,7 +4,7 @@
 1. Language specifications should be defined using ebnf and should encapsulate
    the arithmetics operator precedence in it's rules hierarchy.
 2. Solution should have an AST (abstract syntax tree) layer that will be used to 
-   evaluate the arithemtic expressions. 
+   represent the parsed text and evaluate/execute the arithemtic expressions. 
 3. Language specification rules should be broken to corelate to the required AST
    structure. That will minimize transition code from parse rules to AST.
 4. The AST model will also contain the arithmetic executing code which will
