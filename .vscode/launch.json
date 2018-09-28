@@ -8,7 +8,7 @@
             "console": "internalConsole",
             "stopOnEntry": false,
             "mainClass": "com.gremlin.apps.Main",
-            "args": "",
+            "args": "${workspaceFolder}/test.txt",
             "projectName": "tbcalc"
         }
     ]

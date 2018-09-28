@@ -1,5 +1,7 @@
 package com.gremlin.engine;
 
+import com.gremlin.engine.expressions.EmptyExpression;
+
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
@@ -45,5 +47,17 @@ public abstract class Expression
 	 */
 	public void assign(Processor processor, Expression value) {
 
+	}
+
+	/**
+	 * Check if is an empty expression
+	 * @param expression The expression to test
+	 * @return True if is empty and false if is not empty
+	 */
+	public static boolean isEmpty(Expression expression) {
+		if(expression != null){
+			return (expression instanceof EmptyExpression);
+		}
+		return false;
 	}
 }
