@@ -131,7 +131,8 @@ public class ProcessorTests
         Processor processor = new Processor();
         processor.execute("a = sin(2)");
        
-
+        assertTrue("'a' should be 0.9092974268256817.", processor.checkVariable("a", 0.9092974268256817));
+        
 
     }
 }
