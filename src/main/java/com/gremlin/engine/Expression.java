@@ -3,7 +3,6 @@ package com.gremlin.engine;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.TokenStream;
 
 public abstract class Expression
 {

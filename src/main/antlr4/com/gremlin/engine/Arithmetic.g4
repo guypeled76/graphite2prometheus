@@ -90,7 +90,7 @@ atom
    ;
 
 function 
-    : variable LPAREN expression (COMMA expression)* RPAREN
+    : variable LPAREN expression? (COMMA expression)* RPAREN
     ;
 
 parentheses
