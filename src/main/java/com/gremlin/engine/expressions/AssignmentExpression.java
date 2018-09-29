@@ -16,12 +16,12 @@ public class AssignmentExpression extends Expression
     }
 
     @Override
-    public Expression evaluate(Processor processor) {
+    public Expression evaluate(Processor processor)  throws Exception {
         return new EmptyExpression();
     }
 
     @Override
-    public Expression execute(Processor processor) {
+    public Expression execute(Processor processor)  throws Exception {
         
         Expression assignValue = this.value;
 

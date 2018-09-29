@@ -1,7 +1,5 @@
 package com.gremlin.apps;
 
-import java.io.Console;
-import java.io.File;
 import java.util.Scanner;
 
 import com.gremlin.engine.Expression;

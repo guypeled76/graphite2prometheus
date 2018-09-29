@@ -12,17 +12,17 @@ public class ParenthesesExpression extends Expression
     }
 
     @Override
-    public Expression evaluate(Processor processor) {
+    public Expression evaluate(Processor processor) throws Exception {
         return this.expression.evaluate(processor);
     }
 
     @Override
-    public Expression execute(Processor processor) {
+    public Expression execute(Processor processor) throws Exception {
         return this.expression.execute(processor);
     }
 
     @Override
-    public void assign(Processor processor, Expression value) {
+    public void assign(Processor processor, Expression value) throws Exception {
         this.expression.assign(processor, value);
     }
 

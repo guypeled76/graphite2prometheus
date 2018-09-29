@@ -1,8 +1,7 @@
 grammar Arithmetic;
  
 content
-    : function
-    | assignment
+    : assignment
     | plusAssignment
     | minusAssignment
     | expression

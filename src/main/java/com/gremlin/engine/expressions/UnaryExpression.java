@@ -15,7 +15,7 @@ public class UnaryExpression extends Expression
     }
 
     @Override
-    public Expression evaluate(Processor processor) {
+    public Expression evaluate(Processor processor) throws Exception {
         
         // If is the minus unary operator
         if(this.kind == UnaryKind.MINUS)

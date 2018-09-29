@@ -24,7 +24,7 @@ public class Processor
 	 * @param expressionOrEquation The arithmethic expression to evaluate.
 	 * @return The evaluation of the expression or null
 	 */
-	public Expression evaluate(String expressionOrEquation) {
+	public Expression evaluate(String expressionOrEquation) throws Exception {
 
 		
 		Expression expression = Expression.build(expressionOrEquation);
@@ -39,7 +39,7 @@ public class Processor
 	 * @param expressionOrEquation The arithmethic expression to execute.
 	 * @return The evaluation of the expression
 	 */
-	public Expression execute(String expressionOrEquation) {
+	public Expression execute(String expressionOrEquation) throws Exception {
 
 		
 		Expression expression = Expression.build(expressionOrEquation);

@@ -27,7 +27,7 @@ public class VariableExpression extends Expression
      * Decrement the variable value.
      * @param processor The current related processor
      */
-	public void decrement(Processor processor) {
+	public void decrement(Processor processor) throws Exception {
         Expression value = processor.evaluateVariable(this.identifier);
         value = new BinaryExpression(value, BinaryKind.SUBTRACTION, new NumberExpression(1));
         value = value.evaluate(processor);
@@ -38,7 +38,7 @@ public class VariableExpression extends Expression
      * Increment the variable value.
      * @param processor The current related processor
      */
-	public void increment(Processor processor) {
+	public void increment(Processor processor) throws Exception {
         Expression value = processor.evaluateVariable(this.identifier);
         value = new BinaryExpression(value, BinaryKind.ADDITION, new NumberExpression(1));
         value = value.evaluate(processor);

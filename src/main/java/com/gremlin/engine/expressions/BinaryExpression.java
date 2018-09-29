@@ -16,7 +16,7 @@ public class BinaryExpression extends Expression
     }
 
     @Override
-    public Expression evaluate(Processor processor) {
+    public Expression evaluate(Processor processor)  throws Exception {
         
         // Evaluate both sides of the binary expression
         Expression evaluatedLeft = this.left.evaluate(processor);

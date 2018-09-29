@@ -1,7 +1,5 @@
 package com.gremlin.engine;
 
-import com.gremlin.engine.expressions.EmptyExpression;
-
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
@@ -51,7 +49,7 @@ public abstract class Expression
 	 * @param processor The related processor.
 	 * @return The evaluated value of the expression.
 	 */
-	public Expression evaluate(Processor processor) {
+	public Expression evaluate(Processor processor) throws Exception {
 		return this;
 	} 
 
@@ -60,7 +58,7 @@ public abstract class Expression
 	 * @param processor The related processor.
 	 * @return The execution result if is a value
 	 */
-	public Expression execute(Processor processor) {
+	public Expression execute(Processor processor) throws Exception {
 		return this.evaluate(processor);
 	}
 
@@ -69,7 +67,7 @@ public abstract class Expression
 	 * @param processor The related processor.
 	 * @param value The value to assign.
 	 */
-	public void assign(Processor processor, Expression value) {
+	public void assign(Processor processor, Expression value) throws Exception {
 
 	}
 
