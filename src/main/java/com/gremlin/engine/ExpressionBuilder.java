@@ -1,5 +1,8 @@
 package com.gremlin.engine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.gremlin.engine.ArithmeticParser.*;
 import com.gremlin.engine.expressions.*;
 
@@ -12,6 +15,19 @@ class ExpressionBuilder extends ArithmeticBaseVisitor<Expression>
 
     public ExpressionBuilder() {
         
+    }
+
+    @Override
+    public Expression visitFunction(FunctionContext ctx) {
+
+        ArrayList<Expression> expressions = new ArrayList<Expression>();
+
+        for(ExpressionContext expressionContext : ctx.expression()) {
+            expressions.add(this.visitExpression(expressionContext));
+        }
+        return new FunctionExpression(
+            ctx.variable().getText(),
+            expressions);
     }
 
     @Override

@@ -1,7 +1,8 @@
 grammar Arithmetic;
  
 content
-    : assignment
+    : function
+    | assignment
     | plusAssignment
     | minusAssignment
     | expression
@@ -86,7 +87,12 @@ atom
    | variableMinusminus
    | variablePlusplus
    | parentheses
+   | function
    ;
+
+function 
+    : variable LPAREN expression* RPAREN
+    ;
 
 parentheses
     : LPAREN expression RPAREN
@@ -148,7 +154,7 @@ variablePlusplus
     ;
 
 variable
-   : LETTER (LETTER | DIGIT)*
+   : (E | LETTER) (E | LETTER | DIGIT)*
    ;
 
 

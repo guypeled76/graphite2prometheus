@@ -9,5 +9,9 @@ public class EmptyExpression extends Expression
         
     }
 
+    @Override
+    public boolean isEmpty() {
+        return true;
+    }
     
 }

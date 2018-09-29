@@ -33,28 +33,25 @@ class Main {
             // Read next line and process or exit
             while(!exit && ((line = readLine(scanner)) != null))
             {
-                // TODO: move function parsing to processor
-                switch(line) {
-                    case "exit()":
+                // Execute line
+                Expression result = processor.execute(line);
+
+                // If is not an empty expression
+                if(result != null && !result.isEmpty())
+                {
+                    // If is an exit expression
+                    if(result.isExit()) {
                         exit = true;
-                        break;
-                    case "debug()":
+                    // If is a debug expression
+                    } else if(result.isDebug()){
+
                         // Write the processor state
                         System.out.println(processor.debug());
-                        break;
-                    default:
-                        // Evaluate line
-                        Expression result = processor.execute(line);
-                        if(!Expression.isEmpty(result))
-                        {
-                            // Print the value of the evaluated expression
-                            System.out.println(result);
-                        }
-                        break;
+                    } else {
+                        // Print the value of the evaluated expression
+                        System.out.println(result);
+                    }
                 }
-                
-
-
             } 
 
             // Write the processor state

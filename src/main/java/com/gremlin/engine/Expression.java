@@ -23,6 +23,30 @@ public abstract class Expression
 	}
 
 	/**
+	 * Check is an empty expression
+	 * @return True if is an empty expression.
+	 */
+	public boolean isEmpty() {
+		return false;
+	}
+
+	/**
+	 * Check is a debug expression
+	 * @return True if is a debug expression.
+	 */
+	public boolean isDebug() {
+		return false;
+	}
+
+	/**
+	 * Check is an exit expression
+	 * @return True if is an empty expression.
+	 */
+	public boolean isExit() {
+		return false;
+	}
+
+	/**
 	 * Evaluates the expression
 	 * @param processor The related processor.
 	 * @return The evaluated value of the expression.
@@ -49,15 +73,5 @@ public abstract class Expression
 
 	}
 
-	/**
-	 * Check if is an empty expression
-	 * @param expression The expression to test
-	 * @return True if is empty and false if is not empty
-	 */
-	public static boolean isEmpty(Expression expression) {
-		if(expression != null){
-			return (expression instanceof EmptyExpression);
-		}
-		return false;
-	}
+	
 }
