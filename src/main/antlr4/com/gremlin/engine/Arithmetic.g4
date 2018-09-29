@@ -90,7 +90,7 @@ atom
    ;
 
 function 
-    : variable LPAREN expression* RPAREN
+    : variable LPAREN expression (COMMA expression)* RPAREN
     ;
 
 parentheses
@@ -226,6 +226,9 @@ ASSIGN
    : '='
    ;
 
+COMMA
+   : ','
+   ;
 
 POINT
    : '.'

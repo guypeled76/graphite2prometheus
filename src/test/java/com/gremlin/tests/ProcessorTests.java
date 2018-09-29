@@ -147,4 +147,16 @@ public class ProcessorTests
         
 
     }
+
+
+    @Test()
+    public void maxTest() throws ProcessorException 
+    {
+        Processor processor = new Processor();
+        processor.execute("a = max(2,4)");
+
+        assertTrue("'a' should be 4.", processor.checkVariable("a", 4));
+        
+
+    }
 }
