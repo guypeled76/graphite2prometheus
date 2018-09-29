@@ -21,6 +21,13 @@ public class NumberExpression extends Expression
 
     @Override
     public String toString() {
-        return String.valueOf(this.value);
+        long longValue = (long)this.value;
+        if(longValue == this.value) {
+            return String.valueOf(longValue);
+        }
+        else {
+            return String.valueOf(this.value);
+        }
+        
     }
 }
