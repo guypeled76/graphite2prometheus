@@ -5,10 +5,9 @@
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
+            "console":"externalTerminal",
             "stopOnEntry": false,
             "mainClass": "com.gremlin.apps.Main",
-            "args": "${workspaceFolder}/test.txt",
             "projectName": "tbcalc"
         }
     ]
