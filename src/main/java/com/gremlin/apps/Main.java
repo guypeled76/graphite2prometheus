@@ -39,16 +39,11 @@ class Main {
                 // If is not an empty expression
                 if(result != null && !result.isEmpty())
                 {
-                    // If is an exit expression
                     if(result.isExit()) {
                         exit = true;
-                    // If is a debug expression
                     } else if(result.isDebug()){
-
-                        // Write the processor state
                         System.out.println(processor.debug());
                     } else {
-                        // Print the value of the evaluated expression
                         System.out.println(result);
                     }
                 }
