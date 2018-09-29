@@ -7,17 +7,40 @@ import org.antlr.v4.runtime.TokenStream;
 
 public abstract class Expression
 {
+	
 	/**
 	 * Builds an expression from expression text
+	 * 
 	 * @param expression The text expression
 	 * @return
+	 * @throws ProcessorException
 	 */
-	public static Expression build(String expression) {
-        Lexer lexer = new ArithmeticLexer(CharStreams.fromString(expression));
-		TokenStream tokenStream = new CommonTokenStream(lexer);
-		ArithmeticParser parser = new ArithmeticParser(tokenStream);
+	public static Expression build(String expression) throws ProcessorException {
+		
+		Expression builtExpression = null;
+
+		// Error listener that handles lexer and parser errors
+		ExpressionBuilderErrorListner errorListner = new ExpressionBuilderErrorListner();
+		
+
+		// Create lexer
+		Lexer lexer = new ArithmeticLexer(CharStreams.fromString(expression));
+		lexer.removeErrorListeners();
+		lexer.addErrorListener(errorListner);
+	
+		// Create parser
+		ArithmeticParser parser = new ArithmeticParser(new CommonTokenStream(lexer));
+		parser.removeErrorListeners();
+		parser.addErrorListener(errorListner);
+
+		// Try to build expression
 		ExpressionBuilder expressionBuilder = new ExpressionBuilder();
-		return expressionBuilder.visitContent(parser.content());
+		builtExpression = expressionBuilder.visitContent(parser.content());
+
+		// Throw exception if needed
+		errorListner.throwExceptionIfNeeded();
+
+		return builtExpression;
 	}
 
 	/**
@@ -49,7 +72,7 @@ public abstract class Expression
 	 * @param processor The related processor.
 	 * @return The evaluated value of the expression.
 	 */
-	public Expression evaluate(Processor processor) throws Exception {
+	public Expression evaluate(Processor processor) throws ProcessorException {
 		return this;
 	} 
 
@@ -58,7 +81,7 @@ public abstract class Expression
 	 * @param processor The related processor.
 	 * @return The execution result if is a value
 	 */
-	public Expression execute(Processor processor) throws Exception {
+	public Expression execute(Processor processor) throws ProcessorException {
 		return this.evaluate(processor);
 	}
 
@@ -67,7 +90,7 @@ public abstract class Expression
 	 * @param processor The related processor.
 	 * @param value The value to assign.
 	 */
-	public void assign(Processor processor, Expression value) throws Exception {
+	public void assign(Processor processor, Expression value) throws ProcessorException {
 
 	}
 

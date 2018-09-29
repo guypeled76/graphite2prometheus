@@ -2,6 +2,7 @@ package com.gremlin.engine.expressions;
 
 import com.gremlin.engine.Expression;
 import com.gremlin.engine.Processor;
+import com.gremlin.engine.ProcessorException;
 
 public class BinaryExpression extends Expression
 {
@@ -16,7 +17,7 @@ public class BinaryExpression extends Expression
     }
 
     @Override
-    public Expression evaluate(Processor processor)  throws Exception {
+    public Expression evaluate(Processor processor)  throws ProcessorException {
         
         // Evaluate both sides of the binary expression
         Expression evaluatedLeft = this.left.evaluate(processor);

@@ -2,6 +2,7 @@ package com.gremlin.engine.expressions;
 
 import com.gremlin.engine.Expression;
 import com.gremlin.engine.Processor;
+import com.gremlin.engine.ProcessorException;
 
 
 public class VariableExpression extends Expression
@@ -27,7 +28,7 @@ public class VariableExpression extends Expression
      * Decrement the variable value.
      * @param processor The current related processor
      */
-	public void decrement(Processor processor) throws Exception {
+	public void decrement(Processor processor) throws ProcessorException {
         Expression value = processor.evaluateVariable(this.identifier);
         value = new BinaryExpression(value, BinaryKind.SUBTRACTION, new NumberExpression(1));
         value = value.evaluate(processor);
@@ -38,7 +39,7 @@ public class VariableExpression extends Expression
      * Increment the variable value.
      * @param processor The current related processor
      */
-	public void increment(Processor processor) throws Exception {
+	public void increment(Processor processor) throws ProcessorException {
         Expression value = processor.evaluateVariable(this.identifier);
         value = new BinaryExpression(value, BinaryKind.ADDITION, new NumberExpression(1));
         value = value.evaluate(processor);

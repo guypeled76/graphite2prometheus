@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.gremlin.engine.Expression;
 import com.gremlin.engine.Processor;
+import com.gremlin.engine.ProcessorException;
 
 /**
  * Provides support for functions
@@ -42,13 +43,20 @@ public class FunctionExpression extends Expression
     }
  
     @Override
-    public Expression evaluate(Processor processor) throws Exception {
+    public Expression evaluate(Processor processor) throws ProcessorException {
         
         // If is not special methods
         if(!isExit() && !isDebug())
         {
             // Get method from name and parameters
-            Method method = Math.class.getDeclaredMethod(this.name, this.getArgumentTypes());
+            Method method = null;
+            
+            // Try to get method
+            try {
+                method = Math.class.getDeclaredMethod(this.name, this.getArgumentTypes());
+            } catch(Exception exception) {
+                throw new ProcessorException(String.format("Failed to resolve '%s' method.", this.name),exception);
+            }
             
             // Get evaluated arguments
             ArrayList<Expression> evaluatedArguments = getEvaluatedArguments(processor);
@@ -59,14 +67,18 @@ public class FunctionExpression extends Expression
                 // Get values
                 double[] values = getNumericArguments(evaluatedArguments);
 
-                // Invoke method
-                switch(values.length){
-                    case 1:
-                        return new NumberExpression((double)method.invoke(null,values[0]));
-                    case 2:
-                        return new NumberExpression((double)method.invoke(null,values[0], values[1]));
-                    default:
-                        return new NumberExpression((double)method.invoke(null,new Object[]{}));
+                try {
+                    // Invoke method
+                    switch(values.length){
+                        case 1:
+                            return new NumberExpression((double)method.invoke(null,values[0]));
+                        case 2:
+                            return new NumberExpression((double)method.invoke(null,values[0], values[1]));
+                        default:
+                            return new NumberExpression((double)method.invoke(null,new Object[]{}));
+                    }
+                } catch(Exception exception) {
+                    throw new ProcessorException(String.format("Failed to invoke '%s' method.", this.name),exception);
                 }
                 
             } else {
@@ -123,7 +135,7 @@ public class FunctionExpression extends Expression
      * @param processor The related processor
      * @return The list of evaluated arguments
      */
-    private ArrayList<Expression> getEvaluatedArguments(Processor processor) throws Exception {
+    private ArrayList<Expression> getEvaluatedArguments(Processor processor) throws ProcessorException {
         ArrayList<Expression> evaluatedArguments = new ArrayList<Expression>();
         for(Expression argument : this.arguments) {
             evaluatedArguments.add(argument.evaluate(processor));

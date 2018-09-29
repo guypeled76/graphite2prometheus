@@ -2,6 +2,7 @@ package com.gremlin.engine.expressions;
 
 import com.gremlin.engine.Expression;
 import com.gremlin.engine.Processor;
+import com.gremlin.engine.ProcessorException;
 
 public class ParenthesesExpression extends Expression
 {
@@ -12,17 +13,17 @@ public class ParenthesesExpression extends Expression
     }
 
     @Override
-    public Expression evaluate(Processor processor) throws Exception {
+    public Expression evaluate(Processor processor) throws ProcessorException {
         return this.expression.evaluate(processor);
     }
 
     @Override
-    public Expression execute(Processor processor) throws Exception {
+    public Expression execute(Processor processor) throws ProcessorException {
         return this.expression.execute(processor);
     }
 
     @Override
-    public void assign(Processor processor, Expression value) throws Exception {
+    public void assign(Processor processor, Expression value) throws ProcessorException {
         this.expression.assign(processor, value);
     }
 

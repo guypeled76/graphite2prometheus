@@ -2,6 +2,7 @@ package com.gremlin.engine.expressions;
 
 import com.gremlin.engine.Expression;
 import com.gremlin.engine.Processor;
+import com.gremlin.engine.ProcessorException;
 
 public class AssignmentExpression extends Expression
 {
@@ -16,12 +17,12 @@ public class AssignmentExpression extends Expression
     }
 
     @Override
-    public Expression evaluate(Processor processor)  throws Exception {
+    public Expression evaluate(Processor processor)  throws ProcessorException {
         return new EmptyExpression();
     }
 
     @Override
-    public Expression execute(Processor processor)  throws Exception {
+    public Expression execute(Processor processor)  throws ProcessorException {
         
         Expression assignValue = this.value;
 

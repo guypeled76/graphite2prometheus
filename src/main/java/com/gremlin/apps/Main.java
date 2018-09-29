@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.gremlin.engine.Expression;
 import com.gremlin.engine.Processor;
+import com.gremlin.engine.ProcessorException;
 
 /**
  * @author Tom Everett
@@ -46,7 +47,7 @@ class Main {
                             System.out.println(result);
                         }
                     }
-                } catch(Exception exception) {
+                } catch(ProcessorException exception) {
                     System.out.println(exception.getMessage());
                 }
             } 

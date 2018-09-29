@@ -8,7 +8,7 @@ public class ProcessorTests
 {
     
     @Test()
-    public void givenExample() throws Exception 
+    public void givenExample() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("i = 0");
@@ -28,7 +28,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void divisionTest() throws Exception 
+    public void divisionTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = 6 / 3 + 1");
@@ -39,7 +39,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void powerTest() throws Exception 
+    public void powerTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = 3 * 3 ^ 2 + 2");
@@ -48,7 +48,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void plusEqualTest() throws Exception 
+    public void plusEqualTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = 3");
@@ -58,7 +58,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void parenthesesTest() throws Exception 
+    public void parenthesesTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = 3");
@@ -69,7 +69,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void minusTest() throws Exception 
+    public void minusTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = -3");
@@ -80,7 +80,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void moduloTest() throws Exception 
+    public void moduloTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = 6");
@@ -92,7 +92,7 @@ public class ProcessorTests
 
 
     @Test()
-    public void hexTest() throws Exception 
+    public void hexTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = 0xAFF + 1");
@@ -103,7 +103,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void dotTest() throws Exception 
+    public void dotTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = 0.5");
@@ -115,7 +115,7 @@ public class ProcessorTests
 
 
     @Test()
-    public void scientificTest() throws Exception 
+    public void scientificTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = 2E-2");
@@ -126,7 +126,7 @@ public class ProcessorTests
     }
 
     @Test()
-    public void sinTest() throws Exception 
+    public void sinTest() throws ProcessorException 
     {
         Processor processor = new Processor();
         processor.execute("a = sin(2)");

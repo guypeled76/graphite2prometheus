@@ -2,6 +2,7 @@ package com.gremlin.engine.expressions;
 
 import com.gremlin.engine.Expression;
 import com.gremlin.engine.Processor;
+import com.gremlin.engine.ProcessorException;
 
 public class UnaryExpression extends Expression
 {
@@ -15,7 +16,7 @@ public class UnaryExpression extends Expression
     }
 
     @Override
-    public Expression evaluate(Processor processor) throws Exception {
+    public Expression evaluate(Processor processor) throws ProcessorException {
         
         // If is the minus unary operator
         if(this.kind == UnaryKind.MINUS)
