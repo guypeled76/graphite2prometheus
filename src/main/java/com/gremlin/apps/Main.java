@@ -9,7 +9,7 @@ import com.gremlin.engine.Processor;
  * @author Tom Everett
  */
 class Main {
-   public static void main(String[] args)  throws Exception  {
+   public static void main(String[] args) {
       
         // If there is a valid extenrnal console
         if(System.console() != null) {
@@ -31,19 +31,23 @@ class Main {
             // Read next line and process or exit
             while(!exit && ((line = readLine(scanner)) != null))
             {
-                // Execute line
-                Expression result = processor.execute(line);
+                try{
+                    // Execute line
+                    Expression result = processor.execute(line);
 
-                // If is not an empty expression
-                if(result != null && !result.isEmpty())
-                {
-                    if(result.isExit()) {
-                        exit = true;
-                    } else if(result.isDebug()){
-                        System.out.println(processor.debug());
-                    } else {
-                        System.out.println(result);
+                    // If is not an empty expression
+                    if(result != null && !result.isEmpty())
+                    {
+                        if(result.isExit()) {
+                            exit = true;
+                        } else if(result.isDebug()){
+                            System.out.println(processor.debug());
+                        } else {
+                            System.out.println(result);
+                        }
                     }
+                } catch(Exception exception) {
+                    System.out.println(exception.getMessage());
                 }
             } 
 
