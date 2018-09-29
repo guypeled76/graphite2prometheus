@@ -135,4 +135,16 @@ public class ProcessorTests
         
 
     }
+
+    @Test()
+    public void sinOfVariableTest() throws ProcessorException 
+    {
+        Processor processor = new Processor();
+        processor.execute("a = 2");
+        processor.execute("a = sin(a)");
+
+        assertTrue("'a' should be 0.9092974268256817.", processor.checkVariable("a", 0.9092974268256817));
+        
+
+    }
 }

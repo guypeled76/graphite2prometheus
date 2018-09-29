@@ -122,7 +122,7 @@ public class FunctionExpression extends Expression
      * @return True if all arguments are numeric
      */
     private boolean isNumericArguments(ArrayList<Expression> arguments) {
-        for(Expression argument : this.arguments) {
+        for(Expression argument : arguments) {
             if(!(argument instanceof NumberExpression)) {
                 return false;
             }
