@@ -36,3 +36,35 @@
    will be named ExpressionBuilder and will be implemented based on a parse rule 
    tree visitor. 
    See ExpressionBuilder.java for implementation.
+
+
+## Usage:
+Create a new processor and execute expressions:
+```java
+Processor processor = new Processor();
+processor.execute("i = 0");
+processor.execute("j = ++i");
+processor.execute("x = i++ + 5");
+processor.execute("y = 5 + 3 * 10");
+processor.execute("i += y");
+```
+
+For testing purposes there is an API for validating variable value:
+```java
+assertTrue("'i' should be 37.", processor.checkVariable("i", 37));
+```
+
+Showing the state of the processor can be done using the debug method:
+```java
+System.out.println(processor.debug());
+```
+
+Evaluating an expression can by done using the evaluate method:
+```java
+Expression i = processor.evaluate("i");
+if(i instanceof NumberExpression) {
+        double value = ((NumberExpression)i).toValue();
+} else {
+        // Expression could not be reduced to a numeric value
+}
+```

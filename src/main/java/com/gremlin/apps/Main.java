@@ -56,7 +56,7 @@ class Main {
             System.out.println(processor.debug());
 
         } else {
-            System.out.println("Please provide an extenrnal console that supports aninput stream.");
+            System.out.println("Please provide an extenrnal console that supports an input stream.");
             return;
         }
 

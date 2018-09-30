@@ -2,6 +2,8 @@ package com.gremlin.tests;
 
 import static org.junit.Assert.assertTrue;
 import com.gremlin.engine.*;
+import com.gremlin.engine.expressions.NumberExpression;
+
 import org.junit.Test;
 
 public class ProcessorTests
@@ -16,6 +18,7 @@ public class ProcessorTests
         processor.execute("x = i++ + 5");
         processor.execute("y = 5 + 3 * 10");
         processor.execute("i += y");
+        
         
         // Create the output string
         // String output = processor.debug();
