@@ -1,5 +1,30 @@
 # Text Based Calculator
 
+#### Objective: 
+Implement a text based calculator application. Usage of Rhino, Nashorn and other
+similar solutions is not allowed.
+#### Input: 
+The input is a series of assignment expressions. The syntax is a subset of Java numeric
+expressions and operators.
+Output: At the end of evaluating the series, the value of each variable is printed out.
+#### Example:
+Input: 
+
+Following is a series of valid inputs for the program:
+
+```java
+i = 0
+j = ++i
+x = i++ + 5
+y = 5 + 3 * 10
+i += y
+```
+Output:
+
+```java
+(i=37,j=1,x=6,y=35)
+```
+
 ## Design Goals:
 1. Language specifications should be defined using ebnf and should encapsulate
    the arithmetics operator precedence in it's rules hierarchy.
