@@ -26,7 +26,7 @@ Output:
 ```
 
 ## Design Goals:
-1. Language specifications should be defined using [_EBNF_](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form) and should encapsulate
+1. Language specifications should be defined using [EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form) and should encapsulate
    the arithmetics operator precedence in it's rules hierarchy.
 2. Solution should have an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (abstract syntax tree) layer that will be used to 
    represent the parsed text and evaluate/execute the arithmetic expressions. 
@@ -37,13 +37,13 @@ Output:
    between the different operations.
    *  Example 1:
         ```
-        `2 + 2` is represented as a binary expression that holds the operator kind
+        2 + 2 is represented as a binary expression that holds the operator kind
         and left/right numeric expressions. When calling the evaluate method of
         the binary expression instance we will get a numeric expression of 4.
         ```
    * Example 2:
         ```
-        `a = 2 + 2` is represented as an assignment expression that has a variable
+        a = 2 + 2 is represented as an assignment expression that has a variable
         expression as it's target and a binary expression as in example 1.
         When calling the execute method on the assignment expression the value will
         be evaluated as in the first example and the result will be stored in 
