@@ -97,3 +97,18 @@ if(i instanceof NumberExpression) {
         // Expression could not be reduced to a numeric value
 }
 ```
+
+
+## Console:
+
+_Main.java_ implements a console interface to the library. The user is prompted to enter expressions. If the expression is executed an if it can be evaluated the used gets a response as in the case of running the _debug()_ expression which prints out the processor state. 
+
+![Console](images/console.png "Console")
+
+Evaluating expressions using the console:
+
+![Console](images/console_eval.png "Console")
+
+Parsing errors displayed in the console:
+
+![Console](images/console_errors.png "Console")
