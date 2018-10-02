@@ -2,7 +2,6 @@ package com.gremlin.tests;
 
 import static org.junit.Assert.assertTrue;
 import com.gremlin.engine.*;
-import com.gremlin.engine.expressions.NumberExpression;
 
 import org.junit.Test;
 
