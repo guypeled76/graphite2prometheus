@@ -101,7 +101,7 @@ if(i instanceof NumberExpression) {
 
 ## Console:
 
-_Main.java_ implements a console interface to the library. The user is prompted to enter expressions. If the expression is executed an if it can be evaluated the used gets a response as in the case of running the _debug()_ expression which prints out the processor state. 
+_Main.java_ implements a console interface to the library. The user is prompted to enter expressions. If the expression is executed and it can be evaluated, the used gets a response as in the case of running the _debug()_ expression which prints out the processor state. 
 
 ![Console](images/console.png "Console")
 
