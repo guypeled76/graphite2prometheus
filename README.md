@@ -72,7 +72,7 @@ Output:
 6. AST representation of the expressions is not returned in case of a parsing error to prevent    consistency issues. Instead the parsing error is raised as a _ProcessorException_. The         console implementation captures _ProcessorException_ exceptions and writes them to the user.
 7. The grammar supports function expressions such as `sin(2)`. Currently the implementation is    hard coded for the special methods `debug()` and `exit()` but all other function               references are executed using reflection on the _java.lang.Math_ class. Currently support      is only available for 0 to 2 arguments.
 8. While the original goal was to create a simple calculator library, the code is written to      provide for future development of solving equations. Thats is why evaluating an expression
-   returns an Expression and not a primitive number. The code assumes that some expression will be reducible to primitive numbers. The current implementation treats variables that
+   returns an Expression and not a primitive number. The code assumes that some expression will not be reducible to primitive numbers. The current implementation treats variables that
    have not been declared as is they where declared and assigned to zero. This currently prevents the expressions from being non reducible.
 9. _ProcessorTests_ class contains multiple tests that should be run after each fix to ensure 
    that previous features had not been broken. Adding new features should be followed by adding tests. 
